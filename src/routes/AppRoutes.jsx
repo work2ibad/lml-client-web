@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 // Layouts
-import ProtectedRoute from "./ProtectedRoute";
+// import ProtectedRoute from "./ProtectedRoute";
 
 // Pages
 import Home from "../pages/home/Home";
@@ -30,7 +30,7 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import UsersManagement from "../pages/admin/UsersManagement";
 import ListingsReview from "../pages/admin/ListingsReview";
 
-// Complaints (your new folder)
+// Complaints
 import Complaints from "../pages/complaints/Complaints";
 
 // Error
@@ -44,116 +44,35 @@ export default function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-
-      {/* KYC Verification */}
-      <Route
-        path="/kyc"
-        element={
-          <ProtectedRoute>
-            <KYC />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/kyc" element={<KYC />} />
 
       {/* Items */}
       <Route path="/items" element={<ItemList />} />
       <Route path="/items/:id" element={<ItemDetails />} />
-
-      <Route
-        path="/items/add"
-        element={
-          <ProtectedRoute>
-            <AddItem />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/items/add" element={<AddItem />} />
 
       {/* Booking */}
-      <Route
-        path="/booking/:id"
-        element={
-          <ProtectedRoute>
-            <BookItem />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/booking/:id" element={<BookItem />} />
+      <Route path="/my-bookings" element={<UserBookings />} />
 
-      <Route
-        path="/my-bookings"
-        element={
-          <ProtectedRoute>
-            <UserBookings />
-          </ProtectedRoute>
-        }
-      />
+      {/* Store */}
+      <Route path="/store/dashboard" element={<StoreDashboard />} />
+      <Route path="/store/add-item" element={<AddStoreItem />} />
+      <Route path="/store/orders" element={<StoreOrders />} />
 
-      {/* Store Routes */}
-      <Route
-        path="/store/dashboard"
-        element={
-          <ProtectedRoute>
-            <StoreDashboard />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/store/add-item"
-        element={
-          <ProtectedRoute>
-            <AddStoreItem />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/store/orders"
-        element={
-          <ProtectedRoute>
-            <StoreOrders />
-          </ProtectedRoute>
-        }
-      />
-
-      {/* Admin Routes */}
-      <Route
-        path="/admin/dashboard"
-        element={
-          <ProtectedRoute>
-            <AdminDashboard />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/admin/users"
-        element={
-          <ProtectedRoute>
-            <UsersManagement />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/admin/listings"
-        element={
-          <ProtectedRoute>
-            <ListingsReview />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/admin/complaints"
-        element={
-          <ProtectedRoute>
-            <Complaints />
-          </ProtectedRoute>
-        }
-      />
+      {/* Admin */}
+      <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      <Route path="/admin/users" element={<UsersManagement />} />
+      <Route path="/admin/listings" element={<ListingsReview />} />
+      <Route path="/admin/complaints" element={<Complaints />} />
 
       {/* Not Found */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
+// protected routes can be wrapped with ProtectedRoute component as needed
+// e.g. <Route path="/store/dashboard" element={<ProtectedRoute><StoreDashboard /></ProtectedRoute>} />
+// to enforce authentication on those routes.
+// we need to implement ProtectedRoute component after completing auth context and login functionality.
+// Without wrapping, all routes are publicly accessible.
