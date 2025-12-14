@@ -104,9 +104,9 @@ export default function Register() {
         </Box>
 
         {/* RIGHT FORM PANEL */}
-        <Box sx={{ width: "65%", p: 4 }}>
-          <Typography variant="h4" sx={{ mb: 3, fontWeight: 700 }}>
-             Register Form
+        <Box sx={{ width: "65%", p: 4. }}>
+          <Typography variant="h4" sx={{ mb: 5, fontWeight: 700, color:"darkblue",textAlign: "center"}}>
+            Register Form
           </Typography>
 
 
@@ -117,7 +117,7 @@ export default function Register() {
           )}
 
           <Box sx={{ display: "flex", gap: 2 }}>
-            <Typography variant="h7" sx={{fontWeight:600, }}> 
+            <Typography variant="h7" sx={{ fontWeight: 600, }}>
               <label htmlFor="">First Name:</label>
             </Typography>
             <Input
@@ -129,10 +129,10 @@ export default function Register() {
               helperText={errors.firstName}
               fullWidth
             />
-            <Typography variant="h7" sx={{fontWeight:600,  }}> 
+            <Typography variant="h7" sx={{ fontWeight: 600, }}>
               <label htmlFor="">Last Name:</label>
             </Typography>
-            
+
             <Input
               placeholder="Last Name"
               name="lastName"
@@ -143,9 +143,9 @@ export default function Register() {
               fullWidth
             />
           </Box><br />
-          <Typography variant="h7" sx={{fontWeight:600,  }}> 
-              <label htmlFor="">CNIC:</label>
-            </Typography>
+          <Typography variant="h7" sx={{ fontWeight: 600, }}>
+            <label htmlFor="">CNIC:</label>
+          </Typography>
           <Input
             placeholder="CNIC (13 digits without dashes)"
             name="cnic"
@@ -155,11 +155,11 @@ export default function Register() {
             helperText={errors.cnic}
             sx={{ mt: 2 }}
             fullWidth
-          /><br/><br />
-          <Typography variant="h7" sx={{fontWeight:600,  }}> 
-              <label htmlFor="">Date Of Birth:</label>
+          /><br /><br />
+          <Typography variant="h7" sx={{ fontWeight: 600, }}>
+            <label htmlFor="">Date Of Birth:</label>
           </Typography>
-          
+
           <Input
             type="date"
             name="dob"
@@ -170,11 +170,11 @@ export default function Register() {
             InputLabelProps={{ shrink: true }}
             sx={{ mt: 2 }}
             fullWidth
-          /><br/><br />
-          <Typography variant="h7" sx={{fontWeight:600,  }}> 
-              <label htmlFor="">E-Mail:</label>
+          /><br /><br />
+          <Typography variant="h7" sx={{ fontWeight: 600, }}>
+            <label htmlFor="">E-Mail:</label>
           </Typography>
-          
+
           <Input
             placeholder="abc@gmail.com"
             name="email"
@@ -185,12 +185,12 @@ export default function Register() {
             sx={{ mt: 2 }}
             fullWidth
           />
-          <br/><br />
+          <br /><br />
           <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-             <Typography variant="h7" sx={{fontWeight:600,  }}> 
-               <label htmlFor="">Password:</label>
+            <Typography variant="h7" sx={{ fontWeight: 600, }}>
+              <label htmlFor="">Password:</label>
             </Typography>
-          <Input
+            <Input
               type="password"
               placeholder="Atleast 8 digits"
               name="password"
@@ -200,10 +200,10 @@ export default function Register() {
               helperText={errors.password}
               fullWidth
             />
-             <Typography variant="h7" sx={{fontWeight:600,  }}> 
+            <Typography variant="h7" sx={{ fontWeight: 600, }}>
               <label htmlFor="">Confrim Password:</label>
             </Typography>
-           
+
             <Input
               type="password"
               placeholder="Confirm Password"
