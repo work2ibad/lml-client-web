@@ -17,10 +17,12 @@ function Navbar() {
       <Toolbar sx={{ gap: 2 }}>
 
         {/* Left Menu Icon */}
-        <IconButton edge="start">
-          <MenuIcon />
-        </IconButton>
-
+         <Box
+            component="img"
+            src="" // <-- Replace with your logo path
+            alt="Let Me Lend"
+            sx={{ height: 40, width: "auto" }}
+          />
         {/* Logo / Title */}
         <Typography
           variant="h6"
