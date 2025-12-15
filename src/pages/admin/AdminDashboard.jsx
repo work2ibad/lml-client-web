@@ -6,18 +6,17 @@ import {
   Grid,
   Stack,
   Button,
-  Divider,
   LinearProgress,
 } from "@mui/material";
 import AdminLayout from "../../layouts/AdminLayout";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import PeopleIcon from "@mui/icons-material/People";
+import ReportProblemIcon from "@mui/icons-material/ReportProblem";
 
-const KpiCard = ({ title, value, subtitle, trend, color }) => (
-  <Card sx={{ borderRadius: 3 }}>
+const KpiCard = ({ title, value, trend, color }) => (
+  <Card sx={{ borderRadius: 0, height: "100%" }}>
     <CardContent>
-      <Typography color="text.secondary" fontSize={13}>
+      <Typography fontSize={13} color="text.secondary">
         {title}
       </Typography>
 
@@ -39,18 +38,53 @@ const KpiCard = ({ title, value, subtitle, trend, color }) => (
   </Card>
 );
 
+const ActionCard = ({ icon, title, description, buttonText, color, link }) => (
+  <Card sx={{ height: "100%" }}>
+    <CardContent>
+      <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+        <Box
+          sx={{
+            width: 48,
+            height: 48,
+            bgcolor: `${color}.light`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {icon}
+        </Box>
+        <Typography fontWeight={600}>{title}</Typography>
+      </Stack>
+
+      <Typography color="text.secondary" mb={3}>
+        {description}
+      </Typography>
+
+      <Button
+        variant="contained"
+        color={color}
+        fullWidth
+        href={link}
+      >
+        {buttonText}
+      </Button>
+    </CardContent>
+  </Card>
+);
+
 export default function AdminDashboard() {
   return (
     <AdminLayout>
       <Box sx={{ p: 3 }}>
         {/* HEADER */}
-        <Typography variant="h4" fontWeight={700} mb={3} color={"primary.main"}>
+        <Typography variant="h4" fontWeight={700} mb={3} color="primary.main">
           Dashboard
         </Typography>
 
         {/* KPI ROW */}
-        <Grid container spacing={5} mb={4} p={3}>
-          <Grid item xs={12} md={4} >
+        <Grid container spacing={3} mb={4}>
+          <Grid item xs={12} md={4}>
             <KpiCard
               title="Total Sales"
               value="$350K"
@@ -79,8 +113,8 @@ export default function AdminDashboard() {
         {/* MAIN CONTENT */}
         <Grid container spacing={4}>
           {/* WEEKLY REPORT */}
-          <Grid item xs={12} md={8} fullWidth>
-            <Card sx={{ borderRadius: 3 ,p:4 ,width:400}}>
+          <Grid item xs={12} md={8}>
+            <Card>
               <CardContent>
                 <Typography fontWeight={600} mb={2}>
                   Report for this week
@@ -107,16 +141,13 @@ export default function AdminDashboard() {
                   </Grid>
                 </Grid>
 
-                {/* Chart Placeholder */}
                 <Box
                   sx={{
                     height: 220,
-                    borderRadius: 2,
                     bgcolor: "grey.100",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "text.secondary",
                   }}
                 >
                   Weekly Sales Chart
@@ -126,9 +157,8 @@ export default function AdminDashboard() {
           </Grid>
 
           {/* RIGHT PANEL */}
-          <Grid item xs={12} md={4} fullWidth>
-            {/* USERS LIVE */}
-            <Card sx={{ borderRadius: 3, mb: 4 ,p:4 ,width:400}}>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ mb: 4 }}>
               <CardContent>
                 <Typography fontWeight={600}>
                   Users in last 30 minutes
@@ -141,14 +171,13 @@ export default function AdminDashboard() {
                   <LinearProgress
                     variant="determinate"
                     value={70}
-                    sx={{ height: 8, borderRadius: 4 }}
+                    sx={{ height: 8 }}
                   />
                 </Box>
               </CardContent>
             </Card>
 
-            {/* SALES BY COUNTRY */}
-            <Card sx={{ borderRadius: 3, }}>
+            <Card>
               <CardContent>
                 <Typography fontWeight={600} mb={2}>
                   Sales by Country
@@ -160,14 +189,8 @@ export default function AdminDashboard() {
                   { country: "Australia", value: "25k", percent: 55 },
                 ].map((item) => (
                   <Box key={item.country} mb={2}>
-                    <Stack
-                      direction="row"
-                      justifyContent="space-between"
-                      mb={0.5}
-                    >
-                      <Typography fontSize={14}>
-                        {item.country}
-                      </Typography>
+                    <Stack direction="row" justifyContent="space-between">
+                      <Typography fontSize={14}>{item.country}</Typography>
                       <Typography fontSize={14} fontWeight={600}>
                         {item.value}
                       </Typography>
@@ -175,7 +198,7 @@ export default function AdminDashboard() {
                     <LinearProgress
                       variant="determinate"
                       value={item.percent}
-                      sx={{ height: 6, borderRadius: 3 }}
+                      sx={{ height: 6 }}
                     />
                   </Box>
                 ))}
@@ -185,6 +208,31 @@ export default function AdminDashboard() {
                 </Button>
               </CardContent>
             </Card>
+          </Grid>
+        </Grid>
+
+        {/* MANAGEMENT SECTION */}
+        <Grid container spacing={4} mt={4}>
+          <Grid item xs={12} md={6}>
+            <ActionCard
+              title="User Management"
+              description="View, block or manage platform users."
+              buttonText="Manage Users"
+              icon={<PeopleIcon color="primary" />}
+              color="primary"
+              link="/admin/users"
+            />
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <ActionCard
+              title="Complaint Management"
+              description="Review and resolve reported complaints."
+              buttonText="View Complaints"
+              icon={<ReportProblemIcon color="error" />}
+              color="error"
+              link="/admin/complaints"
+            />
           </Grid>
         </Grid>
       </Box>

@@ -1,23 +1,41 @@
-import Navbar from "../components/layout/Navbar";
-import { Container, Box } from "@mui/material";
 
-export default function AdminLayout({ children }) {
+import {
+  Box,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import PeopleIcon from "@mui/icons-material/People";
+import ReportProblemIcon from "@mui/icons-material/ReportProblem";
+import InventoryIcon from "@mui/icons-material/Inventory";
+
+const menu = [
+  { text: "Dashboard", icon: <DashboardIcon />, path: "/admin" },
+  { text: "Users", icon: <PeopleIcon />, path: "/admin/users" },
+  { text: "Products", icon: <InventoryIcon />, path: "/admin/products" },
+  { text: "Complaints", icon: <ReportProblemIcon />, path: "/admin/complaints" },
+];
+
+export default function AdminSidebar() {
   return (
-    <>
-      <Navbar />
-      <Box sx={{ display: "flex" }}>
-        <Box sx={{ width: 250, bgcolor: "#f1f5f9", height: "100vh", p: 2 }}>
-          <h3>Admin Panel</h3>
-          <ul>
-            <li>Dashboard</li>
-            <li>Users</li>
-            <li>Listings</li>
-            <li>Complaints</li>
-          </ul>
-        </Box>
-
-        <Container sx={{ mt: 4 }}>{children}</Container>
-      </Box>
-    </>
+    <Box sx={{ width: 260, bgcolor: "primary.main", height: "100vh", color: "#fff" }}>
+      <List>
+        {menu.map((item) => (
+          <ListItemButton
+            key={item.text}
+            sx={{
+              "&:hover": { bgcolor: "#1E293B" },
+            }}
+          >
+            <ListItemIcon sx={{ color: "#94A3B8" }}>
+              {item.icon}
+            </ListItemIcon>
+            <ListItemText primary={item.text} />
+          </ListItemButton>
+        ))}
+      </List>
+    </Box>
   );
 }
