@@ -31,6 +31,12 @@ const sliderData = [
     subtitle: "SAFE & SECURE",
     image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df",
   },
+  {
+    tag: "Earn from Idle Items",
+    title: "LEND & EARN.",
+    subtitle: "FAST & RELIABLE",
+    image: "https://images.unsplash.com/photo-1605902711622-cfb43c44367f",
+  },
 ];
 
 /* ================= CATEGORIES ================= */
@@ -52,49 +58,54 @@ export default function Home() {
       <Paper
         elevation={0}
         sx={{
+          height: 360,
           borderRadius: 3,
-          height: 320,
-          display: "flex",
-          alignItems: "center",
-          px: 6,
-          background: "#0f172a",
-          color: "#fff",
           position: "relative",
           overflow: "hidden",
+          backgroundImage: `url(${sliderData[activeStep].image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
-        {/* Left Content */}
-        <Box sx={{ maxWidth: 420 }}>
-          <Typography variant="caption" sx={{ opacity: 0.8 }}>
-            {sliderData[activeStep].tag}
-          </Typography>
-
-          <Typography variant="h4" fontWeight={800} mt={1}>
-            {sliderData[activeStep].title}
-          </Typography>
-
-          <Typography fontWeight={600} sx={{ mt: 1 }}>
-            {sliderData[activeStep].subtitle}
-          </Typography>
-        </Box>
-
-        {/* Right Image */}
+        {/* Overlay */}
         <Box
           sx={{
             position: "absolute",
-            right: 60,
-            height: 220,
-            width: 220,
-            backgroundImage: `url(${sliderData[activeStep].image})`,
-            backgroundSize: "cover",
-            borderRadius: 2,
+            inset: 0,
+            background:
+              "linear-gradient(90deg, rgba(15,23,42,0.85) 40%, rgba(15,23,42,0.2))",
+            color: "#fff",
+            display: "flex",
+            alignItems: "center",
+            px: 6,
           }}
-        />
+        >
+          <Box sx={{ maxWidth: 420 }}>
+            <Typography variant="caption" sx={{ opacity: 0.8 }}>
+              {sliderData[activeStep].tag}
+            </Typography>
+
+            <Typography variant="h4" fontWeight={800} mt={1}>
+              {sliderData[activeStep].title}
+            </Typography>
+
+            <Typography fontWeight={600} sx={{ mt: 1 }}>
+              {sliderData[activeStep].subtitle}
+            </Typography>
+
+            <Button
+              variant="contained"
+              sx={{ mt: 3, borderRadius: 3 }}
+            >
+              Explore Items
+            </Button>
+          </Box>
+        </Box>
 
         {/* Arrows */}
         <IconButton
           onClick={() => setActiveStep((p) => Math.max(p - 1, 0))}
-          sx={{ position: "absolute", left: 10, color: "#fff" }}
+          sx={{ position: "absolute", left: 10, top: "50%", color: "#fff" }}
         >
           <KeyboardArrowLeft />
         </IconButton>
@@ -103,7 +114,7 @@ export default function Home() {
           onClick={() =>
             setActiveStep((p) => Math.min(p + 1, sliderData.length - 1))
           }
-          sx={{ position: "absolute", right: 10, color: "#fff" }}
+          sx={{ position: "absolute", right: 10, top: "50%", color: "#fff" }}
         >
           <KeyboardArrowRight />
         </IconButton>
@@ -115,26 +126,27 @@ export default function Home() {
           activeStep={activeStep}
           sx={{
             position: "absolute",
-            bottom: 8,
+            bottom: 10,
+            width: "100%",
             background: "transparent",
           }}
         />
       </Paper>
 
-      {/* ================= FEATURED ITEMS ================= */}
-      <Box sx={{ mt: 6 }}>
-        <Box display="flex" justifyContent="space-between" mb={2}>
+      {/* ================= BEST DEALS ================= */}
+      <Box sx={{ mt: 7 }}>
+        <Box display="flex" justifyContent="space-between" mb={3}>
           <Typography fontWeight={600}>
             Grab the best deal on Lending
           </Typography>
           <Typography color="primary">View All →</Typography>
         </Box>
 
-        <Grid container spacing={2}>
+        <Grid container spacing={3}>
           {[1, 2, 3, 4, 5].map((i) => (
             <Grid item xs={6} sm={4} md={2.4} key={i}>
               <Card sx={{ borderRadius: 2 }}>
-                <Box sx={{ height: 120, bgcolor: "#f1f5f9" }} />
+                <Box sx={{ height: 140, bgcolor: "#f1f5f9" }} />
                 <CardContent>
                   <Typography fontWeight={600}>
                     Camera Equipment
@@ -150,22 +162,22 @@ export default function Home() {
       </Box>
 
       {/* ================= TOP CATEGORIES ================= */}
-      <Box sx={{ mt: 7 }}>
-        <Box display="flex" justifyContent="space-between" mb={3}>
+      <Box sx={{ mt: 8 }}>
+        <Box display="flex" justifyContent="space-between" mb={4}>
           <Typography fontWeight={600}>
             Shop From Top Categories
           </Typography>
           <Typography color="primary">View All →</Typography>
         </Box>
 
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           {categories.map((cat, i) => (
             <Grid item xs={4} sm={2} key={i}>
               <Box textAlign="center">
                 <Avatar
                   sx={{
-                    width: 70,
-                    height: 70,
+                    width: 72,
+                    height: 72,
                     bgcolor: "#f8fafc",
                     color: "#0ea5e9",
                     fontSize: 26,
@@ -174,13 +186,53 @@ export default function Home() {
                 >
                   {cat.icon}
                 </Avatar>
-                <Typography sx={{ mt: 1 }} fontWeight={500}>
+                <Typography sx={{ mt: 1.5 }} fontWeight={500}>
                   {cat.title}
                 </Typography>
               </Box>
             </Grid>
           ))}
         </Grid>
+      </Box>
+
+      {/* ================= DAILY ESSENTIALS ================= */}
+      <Box sx={{ mt: 9 }}>
+        <Box display="flex" justifyContent="space-between" mb={3}>
+          <Typography fontWeight={600}>
+            Daily Essentials
+          </Typography>
+          <Typography color="primary">View All →</Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            gap: 3,
+            overflowX: "auto",
+            pb: 1,
+          }}
+        >
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <Card
+              key={i}
+              sx={{
+                minWidth: 200,
+                borderRadius: 2,
+                flexShrink: 0,
+              }}
+            >
+              <Box sx={{ height: 120, bgcolor: "#f1f5f9" }} />
+              <CardContent>
+                <Typography fontWeight={600}>
+                  Household Item
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Up to 60% off
+                </Typography>
+              </CardContent>
+            </Card>
+          ))}
+        </Box>
       </Box>
     </UserLayout>
   );
