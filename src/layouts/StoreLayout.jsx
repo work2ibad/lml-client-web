@@ -26,7 +26,7 @@ export default function StoreLayout({ children }) {
             onClick={toggleSidebar}
             sx={{
               position: "fixed",
-              top: 80,
+              top: "75vh",
               left: 20,
               zIndex: 1300,
               boxShadow: 3,

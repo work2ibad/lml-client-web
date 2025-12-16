@@ -21,7 +21,7 @@ export default function AdminLayout({ children }) {
           onClick={toggleSidebar}
           sx={{
             position: "fixed",
-            top: 20,
+            top: "75vh",
             left: 20,
             zIndex: 1300,
             boxShadow: 3,
