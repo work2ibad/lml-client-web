@@ -13,14 +13,6 @@ const COLORS = {
     Returned: '#3B82F6',   // blue
 };
 
-// Sample data
-const data = [
-    { name: 'Completed', value: 374 },
-    { name: 'Pending', value: 300 },
-    { name: 'Cancelled', value: 300 },
-    { name: 'Returned', value: 200 },
-];
-
 const renderActiveShape = ({
     cx,
     cy,
@@ -84,14 +76,14 @@ const renderActiveShape = ({
     );
 };
 
-export default function CustomerReport() {
+export default function CustomerReport( {data=[]} ) {
     return (
         <ResponsiveContainer width={280} height={280}>
             <PieChart margin={{ top: 20, right: 80, left: 80, bottom: 60 }}>
                 <Pie
                     data={data}
-                    cx="50%"
-                    cy="50%"
+                    cx="60%"
+                    cy="60%"
                     innerRadius={65}
                     outerRadius={90}
                     activeShape={renderActiveShape}

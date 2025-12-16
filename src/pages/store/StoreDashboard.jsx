@@ -9,7 +9,7 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
 import ReportCard from "./reports/ReportCard";
 import MonthlyReport from "./reports/MonthlyReport";
-import CustomersReport from "./reports/CustomersReport";
+import OrdersReport from "./reports/OrdersReport";
 
 export default function StoreDashboard() {
 
@@ -34,6 +34,13 @@ export default function StoreDashboard() {
     { month: "Jan 2025", Earning: 2100 },
     { month: "Feb 2025", Earning: 2300 },
     { month: "Mar 2025", Earning: 2800 },
+  ]);
+
+  const [orderData, setOrderData] = useState([
+    { name: 'Completed', value: 374 },
+    { name: 'Pending', value: 300 },
+    { name: 'Cancelled', value: 300 },
+    { name: 'Returned', value: 200 },
   ]);
 
   return (
@@ -104,7 +111,7 @@ export default function StoreDashboard() {
 
           {/* Chart */}
           <CardContent sx={{ p: 0 }}>
-            <CustomersReport data={customerReportData} />
+            <OrdersReport data={orderData} />
           </CardContent>
         </Card>
         
