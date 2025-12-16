@@ -14,6 +14,23 @@ import {
   CardMedia,
 } from "@mui/material";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+//slider
+import thirdslide from "../../assets/slider 3.jfif";
+// Best Deals Images
+import cameraImg from "../../assets/camera equipment.png";
+import consoleImg from "../../assets/gaming console.png";
+import bikeImg from "../../assets/mountains bike.png";
+import headphonesImg from "../../assets/headphones.png";
+import watchImg from "../../assets/smart watch.png";
+
+// Daily Essentials Images
+import householdImg from "../../assets/household lint.png";
+import sinkImg from "../../assets/sink.png";
+import chairImg from "../../assets/office chair.png";
+import backpackImg from "../../assets/backpack.png";
+import sportsImg from "../../assets/sports gear.png";
+import lampImg from "../../assets/lamp set.png";
+
 
 /* ================= HERO SLIDER ================= */
 /* ================= HERO SLIDER ================= */
@@ -34,7 +51,7 @@ const sliderData = [
     tag: "Earn from Idle Items",
     title: "LEND & EARN.",
     subtitle: "FAST & RELIABLE",
-    image: "https://images.unsplash.com/photo-1605902711622-cfb43c44367f?auto=format&fit=crop&w=1200&q=80",
+    image: thirdslide,
   },
 ];
 
@@ -43,63 +60,65 @@ const bestDeals = [
   {
     title: "Camera Equipment",
     subtitle: "Save PKR 2,000",
-    image: "https://images.unsplash.com/photo-1519183071298-a2962be54afa?auto=format&fit=crop&w=500&q=80",
+    image: cameraImg,
   },
   {
     title: "Gaming Console",
     subtitle: "Up to 30% off",
-    image: "https://images.unsplash.com/photo-1606813901238-39e92b824d2b?auto=format&fit=crop&w=500&q=80",
+    image: consoleImg,
   },
   {
     title: "Mountain Bike",
     subtitle: "Save PKR 5,000",
-    image: "https://images.unsplash.com/photo-1579621970795-87facc0b1b75?auto=format&fit=crop&w=500&q=80",
+    image: bikeImg,
   },
   {
     title: "Headphones",
     subtitle: "Discount PKR 1,200",
-    image: "https://images.unsplash.com/photo-1580894908361-24b927f2e7ed?auto=format&fit=crop&w=500&q=80",
+    image: headphonesImg,
   },
   {
     title: "Smartwatch",
     subtitle: "Up to 25% off",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80",
+    image: watchImg,
   },
 ];
+
 
 /* ================= DAILY ESSENTIALS ================= */
 const dailyEssentials = [
   {
     title: "Household Item",
     subtitle: "Up to 60% off",
-    image: "https://images.unsplash.com/photo-1606813901238-39e92b824d2b?auto=format&fit=crop&w=500&q=80",
+    image: householdImg,
   },
   {
-    title: "Kitchen Set",
+    title: "SS Sink",
     subtitle: "Save PKR 1,500",
-    image: "https://images.unsplash.com/photo-1580584126177-8c152b354a1d?auto=format&fit=crop&w=500&q=80",
+    image: sinkImg,
   },
   {
     title: "Office Chair",
     subtitle: "Up to 20% off",
-    image: "https://images.unsplash.com/photo-1589571894960-20bbe2828b78?auto=format&fit=crop&w=500&q=80",
+    image: chairImg,
   },
   {
     title: "Backpack",
     subtitle: "Save PKR 800",
-    image: "https://images.unsplash.com/photo-1592503252705-40a83977a7a5?auto=format&fit=crop&w=500&q=80",
+    image: backpackImg,
   },
   {
     title: "Sports Gear",
     subtitle: "Up to 50% off",
-    image: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=500&q=80",
+    image: sportsImg,
   },
   {
     title: "Lamp Set",
     subtitle: "PKR 500 off",
-    image: "https://images.unsplash.com/photo-1598300052304-91b22a6e2e0d?auto=format&fit=crop&w=500&q=80",
+    image: lampImg,
   },
 ];
+
 
 /* ================= CATEGORIES ================= */
 const categories = [
