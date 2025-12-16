@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, IconButton, useTheme, useMediaQuery } from "@mui/material";
+import { Box, useTheme, useMediaQuery, Fab } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import StoreSidebar from "../components/layout/StoreSidebar";
 import TopHeader from "../components/common/header";
@@ -11,31 +11,29 @@ export default function StoreLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+  const sidebarWidth = 260;
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      {/* Top Header */}
+      {/* Top Header - Full Width */}
       <TopHeader />
 
-      <Box sx={{ display: "flex", flexGrow: 1 }}>
-        {/* Mobile Menu Button */}
-        {isMobile && (
-          <IconButton
+      <Box sx={{ display: "flex", flexGrow: 1, position: "relative" }}>
+        {/* Floating Menu Button - Only show when sidebar is closed */}
+        {!sidebarOpen && (
+          <Fab
+            color="primary"
             onClick={toggleSidebar}
             sx={{
               position: "fixed",
               top: 80,
-              left: 16,
+              left: 20,
               zIndex: 1300,
-              bgcolor: "primary.main",
-              color: "white",
-              "&:hover": {
-                bgcolor: "primary.dark",
-              },
+              boxShadow: 3,
             }}
           >
             <MenuIcon />
-          </IconButton>
+          </Fab>
         )}
 
         {/* Sidebar */}
@@ -45,25 +43,41 @@ export default function StoreLayout({ children }) {
           onToggle={toggleSidebar}
         />
 
-        {/* Main Content */}
+        {/* Main Content Area */}
         <Box
           component="main"
           sx={{
             flexGrow: 1,
             bgcolor: "background.default",
-            transition: "margin-left 0.3s",
-            marginLeft: isMobile ? 0 : sidebarOpen ? "260px" : "0px",
-            p: { xs: 2, md: 3 },
-            pt: { xs: 8, md: 3 }, // Extra top padding on mobile for menu button
+            transition: "margin-left 0.3s ease-in-out",
+            marginLeft: isMobile ? 0 : sidebarOpen ? `${sidebarWidth}px` : "0px",
+            display: "flex",
+            flexDirection: "column",
             minHeight: "calc(100vh - 36px)", // Subtract header height
           }}
         >
-          {children}
+          {/* Content */}
+          <Box
+            sx={{
+              flexGrow: 1,
+              p: { xs: 2, md: 3 },
+              pt: { xs: 10, md: 3 }, // Extra top padding on mobile for FAB
+            }}
+          >
+            {children}
+          </Box>
         </Box>
       </Box>
 
-      {/* Footer */}
-      <Footer />
+      {/* Footer - Aligned with sidebar */}
+      <Box
+        sx={{
+          transition: "margin-left 0.3s ease-in-out",
+          marginLeft: isMobile ? 0 : sidebarOpen ? `${sidebarWidth}px` : "0px",
+        }}
+      >
+        <Footer />
+      </Box>
     </Box>
   );
 }
